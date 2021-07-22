@@ -7,7 +7,6 @@ const userList = document.getElementById("users");
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
-
 console.log(username, room);
 const socket = io();
 
@@ -52,6 +51,16 @@ function outputMessage(message) {
 function outputRoomName(room) {
   roomName.innerText = room;
 }
+
+let userstatus;
+setInterval(() => {
+  const element = document.getElementById("body");
+  if (element.parentNode.matches(":hover")) {
+    console.log("online");
+  } else {
+    console.log("offline");
+  }
+}, 2000);
 
 //To Display the Room name
 function outputUsers(users) {
